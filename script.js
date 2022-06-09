@@ -5,7 +5,7 @@ var row = 0;
 var col = 0; 
 
 var gameOver = false;
-var word = "APPLE";
+var word = "SQUID";
 
 
 window.onload = function(){
@@ -51,6 +51,12 @@ function intialize() {
          col = 0;
      }
 
+     else if (e.code == "NumpadEnter") {
+        update();
+        row += 1;
+        col = 0;
+    }
+
      if (gameOver && row == height) {
          gameOver = true;
          document.getElementById("answer").innerText = word;
@@ -61,7 +67,19 @@ function intialize() {
 }
 
 function update() {
-    let correct = 0;
+    let correct = 0; 
+    let letterCount = {};
+for (let i =0; i < word.length; i++) {
+    letter = word[i];
+    if (letterCount[letter]) {
+        letterCount[letter] += 1;
+    }
+    else {
+        letterCount[letter] = 1;
+    }
+}
+
+
     for (let c = 0; c < width; c++) {
         let currTile = document.getElementById(row.toString() + "-" + c.toString());
         let = letter = currTile.innerText
@@ -69,22 +87,33 @@ function update() {
         if (word[c] == letter) {
             currTile.classList.add("correct");
             correct += 1;
+            letterCount[letter] -= 1;
 
         }
-        else if (word.includes(letter)) {
-            currTile.classList.add("present")
-        }
-        
-
-        else {
-            currTile.classList.add("absent")
-        }
-
         if (correct == width) {
-            gameOver = true;
+            gameOver == true;
         }
+
+
     }
 
+    for (let c = 0; c < width; c++) {
+        let currTile = document.getElementById(row.toString() + "-" + c.toString());
+        let = letter = currTile.innerText
+
+        if (!currTile.classList.contains("correct")) {
+
+            if (word.includes(letter) && letterCount[letter] > 0) {
+                currTile.classList.add("present")
+                letterCount[letter] -= 1;
+            }
+            
+
+            else {
+                currTile.classList.add("absent")
+            }
+        }
+    }
 }
 
 
