@@ -1,17 +1,22 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Courier New', Courier, monospace ;
     text-align: center;
+    background-color: rgb(49, 49, 49);
 }
+
 
 hr {
     width: 500px;
+    margin: 0.1em auto;
 }
 
 #title {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: bold;
     letter-spacing: 2px;
+    color: white;
 }
+
 
 #board {
     width: 350px;
@@ -23,13 +28,13 @@ hr {
 }
 
 .tile {
-    border: 2px solid lightgray;
+    border: 2px solid white;
     width: 60px;
     height: 60px;
     margin: 2.5px;
 
 
-    color: black;
+    color: white;
     font-size: 36px;
     font-weight: bold;
     display: flex;
@@ -38,20 +43,20 @@ hr {
 }
 
 .correct {
-    background-color: green;
+    background-color: rgb(30, 155, 30);
     color: white;
     border-color: white;
 }
 
 .present {
-    background-color: yellow;
+    background-color: rgb(235, 189, 19);
     color: white;
     border-color: white;
 
 }
 
 .absent {
-    background-color: red;
+    background-color: rgb(230, 24, 24);
     color: white;
     border-color: white;
 
